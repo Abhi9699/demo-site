@@ -8,6 +8,8 @@ jobs:
       - uses: actions/checkout@v1.0.0
       - uses: max/awesome-lint@v2.0.0
 
+
+
   dast-scan:
     name: DAST Scan
     runs-on: ubuntu-latest
@@ -20,9 +22,10 @@ jobs:
           target: 'http://www.itsecgames.com/'
           cmd_options: '-a -j -l WARN -z "-addoninstallall" '
           allow_issue_writing: true
+        id: zap-scan
 
-      - name: Upload html report
-        uses: actions/upload-artifact@v3
+      - name: Upload ZAP Report
+        uses: actions/upload-artifact@v2
         with:
           name: DAST_Report.html
-          path: report_html.html
+          path: ${{ steps.zap-scan.outputs.report_html_path }}
