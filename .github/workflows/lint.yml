@@ -18,13 +18,14 @@ jobs:
         #id: zap-scan- 
   zap_scan:
     runs-on: ubuntu-latest
-    name: Scan the webapplication
+    name: Scan the web application
     steps:
-      - name: Checkout
+      - name: Checkout code
         uses: actions/checkout@v2
         with:
           ref: master
-      - name: ZAP Scan
+
+      - name: ZAP Baseline Scan
         uses: zaproxy/action-baseline@v0.11.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -32,4 +33,3 @@ jobs:
           target: 'https://www.zaproxy.org'
           rules_file_name: '.zap/rules.tsv'
           cmd_options: '-a'
-          
