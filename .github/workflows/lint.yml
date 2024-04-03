@@ -20,11 +20,6 @@ jobs:
     runs-on: ubuntu-latest
     name: Scan the web application
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-        with:
-          ref: master
-
       - name: ZAP Baseline Scan
         uses: zaproxy/action-baseline@v0.11.0
         with:
