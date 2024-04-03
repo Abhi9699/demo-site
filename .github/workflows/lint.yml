@@ -15,11 +15,5 @@ jobs:
           target: 'http://testphp.vulnweb.com/'
           cmd_options: '-a -j -l WARN -z "-addoninstallall" '
           allow_issue_writing: true
-        id: zap-scan- uses: zaproxy/action-full-scan@v0.4.0
-        with:
-          docker_name: 'owasp/zap2docker-stable'
-          token: ${{ secrets.GITHUB_TOKEN }}
-          target: 'http://testphp.vulnweb.com/'
-          cmd_options: '-a -j -l WARN -z "-addoninstallall" '
-          allow_issue_writing: true
-        id: zap-scan
+        id: zap-scan- 
+          
