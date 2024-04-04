@@ -9,17 +9,15 @@ jobs:
   dast-scan:
     name: DAST Scan
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
-
       - name: Run ZAP OWASP full scan
         id: zap-scan
         uses: zaproxy/action-full-scan@v0.4.0
         with:
           docker_name: 'owasp/zap2docker-stable'
           token: ${{ secrets.GITHUB_TOKEN }}
-          target: ${{ github.event.inputs.image-tag }}
+          target: 'http://testphp.vulnweb.com/'
           cmd_options: '-a -j -l WARN -z "-addoninstallall" '
           allow_issue_writing: true
+        
+
